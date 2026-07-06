@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loan Approval Prediction</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- LEFT SIDE -->
+    <div class="left-panel">
+
+        <h1>
+            <i class="fa-solid fa-building-columns"></i>
+            Loan Approval Prediction
+        </h1>
+
+        <p class="subtitle">
+            Predict whether a loan application is likely to be approved using a
+            Machine Learning Decision Tree model.
+        </p>
+
+        <form action="/predict" method="POST">
+
+            <div class="input-group">
+                <label>
+                    <i class="fa-solid fa-user"></i>
+                    Age
+                </label>
+
+                <input
+                type="number"
+                name="age"
+                placeholder="Enter your age"
+                required>
+            </div>
+
+
+            <div class="input-group">
+                <label>
+                    <i class="fa-solid fa-wallet"></i>
+                    Annual Income
+                </label>
+
+                <input
+                type="number"
+                name="income"
+                placeholder="Enter annual income"
+                required>
+            </div>
+
+
+            <div class="input-group">
+                <label>
+                    <i class="fa-solid fa-money-bill-wave"></i>
+                    Loan Amount
+                </label>
+
+                <input
+                type="number"
+                name="loan"
+                placeholder="Enter loan amount"
+                required>
+            </div>
+
+
+            <div class="input-group">
+                <label>
+                    <i class="fa-solid fa-chart-line"></i>
+                    Credit Score
+                </label>
+
+                <input
+                type="number"
+                name="credit"
+                placeholder="300 - 900"
+                required>
+            </div>
+
+
+            <button type="submit">
+                <i class="fa-solid fa-magnifying-glass-chart"></i>
+                Predict Loan
+            </button>
+
+        </form>
+
+    </div>
+
+    <!-- RIGHT SIDE -->
+
+    <div class="right-panel">
+
+        <div class="result-card">
+
+            <h2>
+                <i class="fa-solid fa-chart-pie"></i>
+                Prediction Result
+            </h2>
+
+            {% if prediction %}
+
+            <div class="prediction">
+                {{ prediction }}
+            </div>
+
+            {% else %}
+
+            <div class="prediction waiting">
+
+                <i class="fa-solid fa-hourglass-half"></i>
+
+                <p>
+                    Fill the form and click
+                    <strong>Predict Loan</strong>
+                    to view the prediction.
+                </p>
+
+            </div>
+
+            {% endif %}
+
+        </div>
+
+
+        <div class="info-card">
+
+            <h3>
+                <i class="fa-solid fa-circle-info"></i>
+                Model Information
+            </h3>
+
+            <ul>
+
+                <li>
+                    <strong>Algorithm:</strong>
+                    Decision Tree
+                </li>
+
+                <li>
+                    <strong>Technology:</strong>
+                    Python, Flask, Scikit-Learn
+                </li>
+
+                <li>
+                    <strong>Dataset:</strong>
+                    Loan Approval Dataset
+                </li>
+
+                <li>
+                    <strong>Features:</strong>
+                    Age, Income, Loan Amount, Credit Score
+                </li>
+
+            </ul>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<footer>
+
+    <p>
+
+        Developed by <strong>Akshita Rai</strong>
+
+        |
+
+        Python • Flask • Machine Learning
+
+    </p>
+
+</footer>
+
+</body>
+</html>
